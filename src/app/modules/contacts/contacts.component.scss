@@ -1,0 +1,92 @@
+@import "~src/app/scss/settings/variables";
+
+/* -------------------------------------------------------------------
+ * ## contact page
+ * ------------------------------------------------------------------- */
+
+/* map
+ * ----------------------------------------------- */
+#map-wrap {
+  background: #FFFFFF;
+  z-index: 500;
+  height: 420px;
+}
+
+#map-wrap .gm-style img {
+  max-width: none;
+}
+
+#map-wrap .gm-style label {
+  width: auto;
+  display: inline;
+}
+
+#map-wrap #map-container {
+  height: 100%;
+  width: 100%;
+  background: #DDDDDD;
+  position: relative;
+}
+
+#map-wrap #map-zoom-in, #map-wrap #map-zoom-out {
+  height: 3.2rem;
+  width: 3.2rem;
+  cursor: pointer;
+  margin-right: 4rem;
+  color: white;
+  background-color: #000000;
+  display: none;
+}
+
+#map-wrap #map-zoom-in {
+  margin-bottom: 2px;
+  margin-top: 30px;
+}
+
+#map-wrap #map-zoom-in::before, #map-wrap #map-zoom-out::before {
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: 'FontAwesome';
+  font-size: 14px;
+  content: "\f067";
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  -webkit-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+
+#map-wrap #map-zoom-in::before {
+  content: "\f067";
+}
+
+#map-wrap #map-zoom-out::before {
+  content: "\f068";
+}
+
+#map-wrap #map-zoom-in:hover::before, #map-wrap #map-zoom-out:hover::before {
+  background-color: #0054a5;
+}
+
+/* contact form
+ * ----------------------------------------------- */
+#cForm {
+  margin-top: 3.6rem;
+
+  input,
+  textarea {
+    width: 100%;
+    margin: 0;
+  }
+
+  .form-field + .form-field {
+    margin-top: 3rem;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 1rem;
+}
+

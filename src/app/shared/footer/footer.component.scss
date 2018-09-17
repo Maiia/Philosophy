@@ -1,0 +1,140 @@
+@import "~src/app/scss/settings/variables";
+
+/* ===================================================================
+ * # footer
+ *
+ * ------------------------------------------------------------------- */
+footer {
+  padding-top: 10.2rem;
+  padding-bottom: 6rem;
+  font-size: 1.5rem;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+footer a {
+  color: #FFFFFF;
+}
+
+footer h4 {
+  font-family: $heading-font-family, sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.286;
+  text-transform: uppercase;
+  letter-spacing: .25rem;
+  padding-bottom: 4.2rem;
+  color: #FFFFFF;
+  margin-top: 0;
+  position: relative;
+}
+
+footer h4::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 120px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.s-footer__main {
+  margin-bottom: 3.6rem;
+}
+
+
+/* -------------------------------------------------------------------
+ * ## footer link list
+ * ------------------------------------------------------------------- */
+.s-footer__linklist {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.s-footer__linklist a {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.s-footer__linklist li {
+  padding-left: 0;
+}
+
+
+/* -------------------------------------------------------------------
+ * ## subscribe form
+ * ------------------------------------------------------------------- */
+.s-footer__subscribe .subscribe-form {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.s-footer__subscribe #mc-form {
+  width: 100%;
+}
+
+.s-footer__subscribe #mc-form input[type="email"] {
+  width: 100%;
+  height: 5.4rem;
+  font-size: 1.5rem;
+  padding: 1.2rem 100px 1.2rem 60px;
+  background: url('/assets/icons/icon-mail.svg') 20px center no-repeat, rgba(0, 0, 0, 0.1);
+  background-size: 24px 16px, auto;
+  margin-bottom: 1.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  border: none;
+}
+
+.s-footer__subscribe #mc-form input[type="email"]:hover,
+.s-footer__subscribe #mc-form input[type="email"]:focus {
+  color: #FFFFFF;
+}
+
+.s-footer__subscribe #mc-form input[type="email"]::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.s-footer__subscribe #mc-form input[type="email"]:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2);  /* Firefox 18- */
+}
+
+.s-footer__subscribe #mc-form input[type="email"]::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2);  /* Firefox 19+ */
+}
+
+.s-footer__subscribe #mc-form input[type="email"]:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.s-footer__subscribe #mc-form input[type="email"].placeholder {
+  color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.s-footer__subscribe #mc-form input[type=submit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #FFFFFF;
+  background: #0054a5;
+  border-color: #0054a5;
+  padding: 0 15px;
+  border-radius: 0 3px 3px 0;
+}
+
+.s-footer__subscribe #mc-form label {
+  color: #FFFFFF;
+  font-family: "metropolis-regular", sans-serif, sans-serif;
+  font-size: 1.3rem;
+  padding: 0 2rem;
+}
+
+.s-footer__subscribe #mc-form label i {
+  padding-right: 6px;
+}
+
+.show-all {
+  cursor: pointer;
+}

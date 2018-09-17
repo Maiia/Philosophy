@@ -1,0 +1,33 @@
+<div class="pageheader-content row no-gutters d-grid">
+
+  <app-featured
+      *ngFor="let article of articles; let i = index"
+      [i]="i"
+      [article]="article"
+      class="featured__column"
+      [ngClass]="{'featured__column--big': i === 0, 'featured__column--small': i != 0}">
+  </app-featured>
+
+</div>
+
+<section class="s-content">
+  <div class="row masonry-wrap">
+      <app-masonry-blog></app-masonry-blog>
+  </div>
+</section>
+
+<!-- s-extra
+    ================================================== -->
+<section class="s-extra">
+
+  <div class="row top">
+
+    <app-popular-posts class="col-eight md-six tab-full popular"></app-popular-posts>
+    <app-about class="col-four md-six tab-full about"></app-about>
+
+  </div> <!-- end row -->
+
+  <app-homepage-tags></app-homepage-tags>
+
+</section> <!-- end s-extra -->
+

@@ -1,0 +1,38 @@
+:host {
+  margin-top: 40px;
+  display: block;
+
+  app-short-article-item + & {
+    padding-top: 40px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+  }
+}
+
+article {
+  display: flex;
+}
+
+.article-item__thumb {
+  flex: 0 0 200px;
+  padding-right: 30px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.article-item__info {
+  flex: 1 1 auto;
+
+  h4 {
+    margin-top: 0;
+  }
+
+  .article-item__meta {
+    margin-top: 20px;
+    padding: 20px 0 0;
+    color: black;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+  }
+}
+

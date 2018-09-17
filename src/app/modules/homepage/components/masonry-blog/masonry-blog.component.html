@@ -1,0 +1,68 @@
+
+<ng-masonry-grid
+  [masonryOptions]="{ transitionDuration: '0.8s', gutter: 5 }"
+  [useAnimation]="true"
+  [useImagesLoaded]="true"
+  [scrollAnimationOptions]="{ animationEffect: 'effect-3', minDuration : 0.4, maxDuration : 0.7 }">
+  <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let item of blogItemsPaginated; let i = index;" class="masonry__brick entry format-standard masonry">
+
+    <div *ngIf="item?.author_id; else phrase">
+      <div class="entry__thumb">
+        <a href="single-standard.html" class="entry__thumb-link">
+          <img [src]="item?.blog_img_small" alt="">
+        </a>
+      </div>
+
+      <div class="entry__text">
+        <div class="entry__header">
+
+          <div class="entry__date">
+            <a href="single-standard.html">{{ item?.date | date: 'LLLL d, yyyy' }}</a>
+          </div>
+          <h1 class="entry__title"><a href="single-standard.html">{{ item?.date | date: 'LLLL d, yyyy' }}</a></h1>
+        </div>
+
+        <div class="entry__excerpt">
+          <p>
+            {{ ( item?.body?.length > 200 )? ( item?.body | slice:0:200 ) + '..' : ( item?.body ) }}
+          </p>
+        </div>
+        <div class="entry__meta">
+          <span class="entry__meta-links">
+              <a href="category.html" *ngFor="let tag of item?.tags">{{ tag }}</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #phrase>
+      <div class="masonry__brick entry format-quote" data-aos="fade-up">
+
+        <div class="entry__thumb">
+          <img src="/assets/blank.png" alt="">
+
+          <blockquote>
+            <p>{{ item?.body }}</p>
+            <cite>
+              <a href="item?.link" *ngIf="item?.link">
+                {{ item?.caption }}
+              </a>
+              <span *ngIf="!item?.link">
+                {{ item?.caption }}
+              </span>
+            </cite>
+          </blockquote>
+
+        </div>
+      </div>
+    </ng-template>
+
+  </ng-masonry-grid-item>
+
+</ng-masonry-grid>
+
+<app-pagination
+  [itemsArr]="blogItems"
+  [itemsLength]="6"
+  (itemsArrPaginated)="itemsArrPaginated($event)"
+></app-pagination>

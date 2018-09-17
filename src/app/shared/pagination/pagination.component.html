@@ -1,0 +1,22 @@
+<div class="row" *ngIf="hasPagination">
+  <div class="col-full">
+    <nav class="pgn">
+      <ul>
+        <li><span class="pgn__prev" href="#0"
+          [ngClass]="{'disabled': pageCurrent == 1}"
+          (click)="onPrevClick()">Prev</span></li>
+        <li *ngFor="let pagItem of pagContent; let i = index; first as isFirst">
+          <span
+            class="pgn__num"
+            [ngClass]="{'active': pageCurrent == pagItem}"
+            (click)="onPagClick($event)">
+            {{ pagItem }}
+          </span>
+        </li>
+        <li><span class="pgn__next"
+            [ngClass]="{'disabled': pageCurrent == pagesAmount}"
+            (click)="onNextClick()">Next</span></li>
+      </ul>
+    </nav>
+  </div>
+</div>

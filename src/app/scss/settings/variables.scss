@@ -1,0 +1,14 @@
+/* Used with preprocessors and contain font, colors definitions, etc. */
+@import "~src/app/scss/settings/fonts";
+
+$white: #fff;
+$green: #679a23;
+$blue:  #01aef0;
+$gray1: #151515;
+$gray2: #050505;
+$black: #000000;
+
+$base-font-family: 'Open Sans';  //metropolis-regular
+$heading-font-family: 'Libre Baskerville';
+
+$border-color: $blue;

@@ -1,0 +1,18 @@
+<h3>Popular Posts</h3>
+
+<div class="block-1-2 block-m-full popular__posts">
+  <article class="col-block popular__post" *ngFor="let post of blogArr">
+    <a href="#0" class="popular__thumb">
+      <img [src]="post?.blog_img_small" alt="">
+    </a>
+    <h5><a href="#0">{{ post?.title }}</a></h5>
+    <section class="popular__meta">
+      <span class="popular__author"><span>By </span>
+        <a href="#0" *ngFor="let item of authorsArr">
+          <span *ngIf="item?.id === post?.author_id">{{item?.name}} </span>
+      </a></span>
+      <span class="popular__date"><span>on </span> <time datetime="2017-12-19">{{ post?.date | date: 'LLLL d, yyyy' }}</time></span>
+    </section>
+  </article>
+
+</div> <!-- end popular_posts -->

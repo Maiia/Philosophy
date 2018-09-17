@@ -1,0 +1,19 @@
+@import '/~src/app/scss/settings/variables';
+
+.article-item__thumb {
+  float: left;
+  margin: 0 20px 10px 0;
+}
+
+.article-item__meta {
+  margin-top: 20px;
+  padding-top: 15px;
+  overflow: hidden;
+  border-top: 1px solid $border-color;
+  color: $black;
+  font-family: $heading-font-family;
+}
+
+.tags {
+  margin-bottom: 20px;
+}

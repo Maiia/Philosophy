@@ -1,0 +1,26 @@
+<div class="s-content">
+  <div class="container">
+
+    <h3 class="page-title">Blog Posts</h3>
+
+    <ul class="tags">
+      <li
+        *ngFor="let item of tags"
+        [ngClass]="{'active': tagsArr.indexOf(item) > -1}"
+      ><span (click)="onTagClick($event)">{{ item }}</span></li>
+    </ul>
+
+    <app-short-article-item
+      *ngFor="let post of blogArrPaginated"
+      [post]="post"
+      [authorsArr]="authorsArr"
+    ></app-short-article-item>
+
+    <app-pagination
+      [itemsArr]="blogArrTagged"
+      [itemsLength]="6"
+      (itemsArrPaginated)="getBlogArrPaginated($event)"
+    ></app-pagination>
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+/* -------------------------------------------------------------------
+ * ## tags
+ * ------------------------------------------------------------------- */
+.tags-wrap {
+  max-width: 900px;
+}
+
+.tags {
+  text-align: center;
+}
+
+.tagcloud {
+  padding-top: .6rem;
+
+  a {
+    display: inline-block;
+    font-family: "metropolis-extrabold", sans-serif;
+    font-size: 1.3rem;
+    line-height: 3.6rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    padding: 0 2rem;
+    margin: 0 1.2rem 1.5rem 0;
+    border-radius: 3px;
+    background: #e2e2e2;
+    text-decoration: none;
+    color: #333333;
+    position: relative;
+
+    &:hover,
+    &:focus {
+      color: #FFFFFF;
+      background: #151515;
+    }
+  }
+}

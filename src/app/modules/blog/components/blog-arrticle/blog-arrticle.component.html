@@ -1,0 +1,33 @@
+<div class="s-content">
+  <div class="container">
+
+    <h3 class="page-title">{{ post?.title }}</h3>
+
+    <ul class="tags">
+      <li *ngFor="let item of post?.tags"><span>{{ item }}</span></li>
+    </ul>
+
+    <article class="clearfix">
+
+      <a href="#0" class="article-item__thumb">
+        <img [src]="post?.blog_img_small" alt="">
+      </a>
+
+      <section class="article-item__info">
+        <section class="article-item__body">
+          {{ post?.body }}
+        </section>
+
+        <section class="article-item__meta">
+          <span class="article-item__author"><span>By </span>
+            <a href="#0" *ngFor="let item of authorsArr">
+              <span *ngIf="item?.id === post?.author_id">{{item?.name}} </span>
+          </a></span>
+          <span class="article-item__date"><span>on </span> <time datetime="2017-12-19">{{ post?.date | date: 'LLLL d, yyyy' }}</time></span>
+        </section>
+
+      </section>
+
+    </article>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="s-content">
+  <div class="container">
+
+    <form method="get">
+      <label>
+        <span class="hide-content">Type text to search</span>
+        <input type="search" class="search-field" placeholder="Type Keywords" [value]="" name="s" title="Search for:" autocomplete="off" (input)="onSearchInput($event)">
+        <button class="btn" (click)="onSearchClick($event)">Search</button>
+      </label>
+    </form>
+
+    <h3 class="page-title">Search Results for "{{ searchText }}"</h3>
+
+    <div *ngIf="searchResults?.length == 0; else template">
+      No results
+    </div>
+
+    <ng-template #template>
+      <app-short-article-item
+        *ngFor="let post of searchResults"
+        [post]="post"
+        [authorsArr]="authorsArr"
+      ></app-short-article-item>
+    </ng-template>
+
+  </div>
+</div>
