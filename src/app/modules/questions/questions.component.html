@@ -1,0 +1,53 @@
+
+<div class="s-content">
+  <div class="container" *ngIf="templateType === 'questions' else answer">
+
+    <ul class="list-inline">
+      <li class="btn" (click)="getFirst()" *ngIf="currentKey != 'question_1'">return to first</li>
+      <li class="btn" (click)="getPrev()" *ngIf="prevKeys.length > 0">return to prev</li>
+    </ul>
+
+    <div>
+      <h1>{{ currentQuestion?.question_text }}</h1>
+      <div class="btn" [@dirDir]="dirDirState" (click)="dirDirChangeState()">дыр-дыр-дыр</div>
+    </div>
+
+    <div class="form-wrapper" [@multiChanges]="state1">
+      <form *ngIf="questionsData" [formGroup]="questionsReactiveForm" (ngSubmit)="onSubmit($event)">
+
+        <div *ngIf="currentQuestion?.question_type === 'radio' else checkbox">
+          <div *ngFor="let question of questionAnswers; let idx = index;">
+            <label class="form-group form-inline">
+              <input type="radio" class="form-control" name="questionRadio" [id]="idx" [value]="question?.index"
+                     formControlName="questionRadio"
+                     [checked]="idx === 0"
+              >
+              <span>{{ question?.answer_text }}</span>
+            </label>
+          </div>
+        </div>
+
+        <ng-template #checkbox>
+          <label *ngFor="let question of questionCheckbox.controls; let idx = index;">
+            <input
+              type="checkbox"
+              [formControl]="question"
+              [checked]="idx === 0"
+            />
+            <span>{{questionAnswers[idx].answer_text}}</span>
+          </label>
+          <app-validation-message class="text-left" [control]="questionsReactiveForm.controls['questionCheckbox']"></app-validation-message>
+        </ng-template>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <ng-template #answer>
+    <div class="container">
+      <h2>{{ currentAnswerData?.result_heading }}</h2>
+      <p>{{ currentAnswerData?.result_description }}</p>
+    </div>
+  </ng-template>
+</div>

@@ -19,8 +19,8 @@ export class HomepageComponent implements OnInit {
 
   getArticles() {
     this.articlesService.getArticles().subscribe(
-      data => {
-        this.articles = data['articles'];
+      (data: any) => {
+        this.articles = data;
       },
       err => console.error('err1', err),
       () => console.log('articles1', this.articles)

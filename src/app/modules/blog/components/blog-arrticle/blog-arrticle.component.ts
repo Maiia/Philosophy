@@ -24,11 +24,11 @@ export class BlogArrticleComponent implements OnInit {
     this.ar.params.subscribe(param => {
       this.postId = Number(param.id);
       this.blogService.getBlog().subscribe(
-        data => {
-          this.post = data['blog'].filter((item: IBlog) => item.id === this.postId)[0];
+        (data: any) => {
+          this.post = data.filter((item: IBlog) => item.id === this.postId)[0];
           this.authorsService.getAuthors().subscribe(
             (authors: IAuthor) => {
-              this.authorsArr = authors['authors'];
+              this.authorsArr = authors;
             },
             err => console.error('err1', err),
             () => console.log('articles1', this.authorsArr)

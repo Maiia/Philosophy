@@ -16,18 +16,20 @@ export class BlogService {
   }
 
   getBlog() {
-    return this.http.get('assets/db.json');
+    return this.http.get('/api/blog');
   }
 
   getTags() {
-    return this.http.get('assets/db.json').pipe(
-      map(data => {
-        const tagsList = data['blog'];
+    return this.http.get('/api/blog').pipe(
+      map((data: any) => {
+        const tagsList = data;
         const tags = [];
+        console.log('TAAAGS', data, typeof tagsList);
 
-        tagsList.forEach((blogItem: any) =>
+        data.forEach((blogItem: any) =>
           tags.push(...blogItem.tags)
         )
+        // console.log('TAAAGS2', tags);
         return new Set(tags);
       })
     );

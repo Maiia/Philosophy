@@ -1,0 +1,28 @@
+@import "~src/app/scss/settings/variables";
+
+.form-wrapper {
+  margin: 30px 0 0;
+
+  button {
+    margin-top: 30px;
+  }
+}
+
+.list-inline {
+  margin-left: 0;
+
+  li {
+    height: auto;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 3rem;
+    border: 1px solid $gray1;
+    background: none;
+  }
+}
+
+label {
+  input + span {
+    margin-left: 10px;
+  }
+}

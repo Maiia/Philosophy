@@ -21,9 +21,9 @@ export class SearchService {
   }
 
   searchBlog(searchVal) {
-    return this.http.get('assets/db.json').pipe(
-      map(data => {
-        const blogData = data['blog'];
+    return this.http.get('/api/blog').pipe(
+      map((data: any) => {
+        const blogData = data;
 
         const filtered = blogData.filter((blogItem: any) => {
             return blogItem.title.toLowerCase().indexOf(searchVal.toLowerCase()) > -1;

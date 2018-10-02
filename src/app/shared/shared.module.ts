@@ -7,19 +7,32 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { ShortArticleItemComponent } from './short-article-item/short-article-item.component';
 import { ValidationComponent } from './validation/validation.component';
 import { CcCustomDirectiveDirective } from '../directives/cc-custom-directive.directive';
+import { ControlInputComponent } from './form-controls/control-input/control-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ControlInputDirective } from './directives/control-input.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
-  declarations: [ PaginationComponent, ShortArticleItemComponent, ValidationComponent, CcCustomDirectiveDirective ],
+  declarations: [
+    PaginationComponent,
+    ShortArticleItemComponent,
+    ValidationComponent,
+    CcCustomDirectiveDirective,
+    ControlInputComponent,
+    ControlInputDirective,
+  ],
   exports: [
     PaginationComponent,
     ShortArticleItemComponent,
     ValidationComponent,
-    CcCustomDirectiveDirective
+    ControlInputComponent,
+    CcCustomDirectiveDirective,
+    ControlInputDirective
   ]
 })
 

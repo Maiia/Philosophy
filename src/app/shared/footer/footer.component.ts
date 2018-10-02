@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
-import { AllService } from '../../services/all.service';
 import { ISocials } from '../../interfaces/i-socials';
+import {AboutService} from '../../services/about.service';
 
 @Component({
   selector: 'app-footer',
@@ -17,7 +17,7 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private blogService: BlogService,
-    private allService: AllService,
+    private aboutService: AboutService,
   ) {
     this.gerBlogArchivesPeriod();
 
@@ -28,8 +28,8 @@ export class FooterComponent implements OnInit {
   }
 
   getSocial() {
-    this.allService.getData().subscribe (
-      data => this.socialsArr = data['about'],
+    this.aboutService.getAbout().subscribe (
+      (data: any) => this.socialsArr = data['social'],
       error => console.log('error', error),
       () => console.log('success')
     );
@@ -37,8 +37,8 @@ export class FooterComponent implements OnInit {
 
   gerBlogArchivesPeriod() {
     this.blogService.getBlog().subscribe(
-      data => {
-        const arr = data['blog'].map(item => {
+      (data: any) => {
+        const arr = data.map(item => {
           return `${new Date(item.date).getMonth()}.1.${new Date(item.date).getFullYear()}`;
         });
         this.archivePeriods = Array.from(new Set(arr).values());

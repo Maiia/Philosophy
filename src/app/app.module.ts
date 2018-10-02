@@ -14,6 +14,10 @@ import { AboutModule } from './modules/about/about.module';
 import { SearchModule } from './modules/search/search.module';
 import { ContactsModule } from './modules/contacts/contacts.module';
 import { NotFoundModule } from './modules/not-found/not-found.module';
+import { QuestionsModule } from './modules/questions/questions.module';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDbServiceService } from './services/in-memory-db-service.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -32,12 +36,15 @@ import { NotFoundModule } from './modules/not-found/not-found.module';
     AboutModule,
     ContactsModule,
     SearchModule,
-    NotFoundModule
+    QuestionsModule,
+    NotFoundModule,
+    BrowserAnimationsModule,
+    InMemoryWebApiModule.forRoot(InMemoryDbServiceService, { delay: 500 })
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [
-
   ]
 })
 export class AppModule { }
+

@@ -25,12 +25,12 @@ export class MasonryBlogComponent implements OnInit {
 
   ngOnInit() {
     this.blogService.getBlog().subscribe (
-      blogItems => {
-        const blogArr = blogItems['blog'];
+      (blogItems: any) => {
+        const blogArr = blogItems;
 
         this.phrasesService.getPhrases().subscribe(
-          arr => {
-            this.includePhrases(arr['phrases'], blogArr);
+          (arr: any) => {
+            this.includePhrases(arr, blogArr);
           },
           err => {},
           () => {}

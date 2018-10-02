@@ -30,8 +30,8 @@ export class FeaturedComponent implements OnInit, OnChanges {
 
   getAuthors() {
     this.authorsService.getAuthors().subscribe(
-      data => {
-        this.author = data['authors'].filter((author: IAuthor) => author.id === this.article.author_id)[0];
+      (data: any) => {
+        this.author = data.filter((author: IAuthor) => author.id === this.article.author_id)[0];
       },
       err => console.error('err1', err),
       () => console.log('authors1', this.author)

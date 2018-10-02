@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { AllService } from '../../services/all.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search.service';
 import { IBlog } from '../../interfaces/i-blog';
+import { BlogService } from '../../services/blog.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private allService: AllService,
+    private blogService: BlogService,
     private modalService: NgbModal,
     private searchService: SearchService,
     config: NgbModalConfig ) {
@@ -31,9 +31,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allService.getData().subscribe(
-      data => {
-        this.blogArr = data['blog'];
+    this.blogService.getBlog().subscribe(
+      (data: any) => {
+        this.blogArr = data;
       },
       error => console.log('error', error),
       () => console.log('success header blog')

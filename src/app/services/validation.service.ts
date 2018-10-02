@@ -12,7 +12,8 @@ export class ValidationService {
       'required': 'This field cannot be left blank',
       'invalidEmailAddress': 'Invalid email address',
       'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.',
-      'minlength': `Minimum length ${validatorValue.requiredLength}`
+      'minlength': `Minimum length ${validatorValue.requiredLength}`,
+      'no_chosen': `You should chose something`
     };
 
     return config[validatorName];
@@ -42,6 +43,18 @@ export class ValidationService {
       return null;
     } else {
       return { 'symbols': true };
+    }
+  }
+
+
+
+  static checkboxHasValueValidator(control) {
+    // console.log('control', control.indexOf(true) > -1, control);
+    console.log('control', control.value.indexOf(true));
+    if (control.value.indexOf(true) > -1) {
+      return null;
+    } else {
+      return { 'no_chosen': true };
     }
   }
 

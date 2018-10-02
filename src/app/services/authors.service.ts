@@ -9,6 +9,6 @@ export class AuthorsService {
   constructor(private http: HttpClient) { }
 
   getAuthors() {
-    return this.http.get('assets/db.json');
+    return this.http.get('/api/authors');
   }
 }

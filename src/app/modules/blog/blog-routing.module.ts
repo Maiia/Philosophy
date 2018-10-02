@@ -4,8 +4,8 @@ import { BlogComponent } from './blog.component';
 import { BlogArrticleComponent } from './components/blog-arrticle/blog-arrticle.component';
 
 const routes: Routes = [
-  { path: 'blog', component: BlogComponent },
-  { path: 'blog/:id', component: BlogArrticleComponent }
+  { path: 'blog', component: BlogComponent, data: { state: 'blog'} },
+  { path: 'blog/:id', component: BlogArrticleComponent, data: { state: 'blog/:id'} }
 ];
 
 @NgModule({

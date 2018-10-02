@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AllService } from '../../../../services/all.service';
 import { IAbout } from '../../../../interfaces/i-about';
+import { AboutService } from '../../../../services/about.service';
 
 @Component({
   selector: 'app-about',
@@ -12,12 +12,12 @@ export class AboutComponent implements OnInit {
 
   about: IAbout;
 
-  constructor(private allService: AllService) {}
+  constructor(private aboutService: AboutService) {}
 
   ngOnInit() {
-    this.allService.getData().subscribe(
-      data => {
-        this.about = data['about'];
+    this.aboutService.getAbout().subscribe(
+      (data: any) => {
+        this.about = data;
       },
       error => console.log('error', error),
       () => console.log('success')

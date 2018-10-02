@@ -26,7 +26,6 @@ export class ContactsComponent implements OnInit {
       return;
     }
 
-    console.log(this.contactsReactiveForm.value);
   }
 
   isControlInvalid(controlName: string): boolean {

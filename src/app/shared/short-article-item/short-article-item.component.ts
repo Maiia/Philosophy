@@ -13,9 +13,10 @@ export class ShortArticleItemComponent implements OnInit {
   @Input() post: IBlog;
   @Input() authorsArr: IAuthor;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    console.log('blog', this.post);
   }
+
+  ngOnInit() {}
 
 }

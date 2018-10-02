@@ -24,12 +24,12 @@ export class PopularPostsComponent implements OnInit {
 
   getBlog() {
     this.blogService.getBlog().subscribe(
-      data => {
-        this.blogArr = data['blog'].sort((item1: IBlog, item2: IBlog) => item1.visited - item2.visited).splice(1, 6);
+      (data: any) => {
+        this.blogArr = data.sort((item1: IBlog, item2: IBlog) => item1.visited - item2.visited).splice(1, 6);
 
         this.authorsService.getAuthors().subscribe(
-          authors => {
-            this.authorsArr = authors['authors'];
+          (authors: any) => {
+            this.authorsArr = authors;
           },
           err => console.error('err1', err),
           () => console.log('articles1', this.authorsArr)

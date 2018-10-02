@@ -46,9 +46,10 @@
         <fieldset>
 
           <div class="form-field">
-            <input formControlName="cName" type="text" id="cName" class="full-width" placeholder="Your Name" value="">
+            <input formControlName="cName" type="text" class="full-width" placeholder="Your Name" appControlInputD [type]="'text'">
             <app-validation-message class="text-left" [control]="contactsReactiveForm.controls['cName']"></app-validation-message>
           </div>
+          <!--<app-control-input controlName='cName'></app-control-input>-->
 
           <div class="form-field">
             <input formControlName="cEmail" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">

@@ -15,4 +15,5 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [ContactsComponent]
 })
+
 export class ContactsModule { }

@@ -12,6 +12,6 @@ export class PhrasesService {
   }
 
   getPhrases() {
-    return this.http.get('assets/db.json');
+    return this.http.get('/api/phrases');
   }
 }

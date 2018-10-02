@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { AuthorsService } from '../../services/authors.service';
-import {IBlog} from '../../interfaces/i-blog';
+import { IBlog } from '../../interfaces/i-blog';
 
 @Component({
   selector: 'app-blog',
@@ -27,8 +27,8 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
     this.blogService.getBlog().subscribe(
-      data => {
-        this.blogArrAll = data['blog'];
+      (data: any) => {
+        this.blogArrAll = data;
 
         this.blogArrTagged = [{}];
         Object.assign(this.blogArrTagged, this.blogArrAll);
