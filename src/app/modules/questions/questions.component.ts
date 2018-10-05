@@ -109,8 +109,6 @@ export class QuestionsComponent implements OnInit {
     } else {
       this.getAnswer();
     }
-
-    // TODO validation if both empty
   }
 
   getQuestionCheckboxChecked() {

@@ -1,4 +1,3 @@
-// import { InMemoryDbService } from 'angular2-in-memory-web-api';
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
@@ -662,8 +661,22 @@ export class InMemoryDbServiceService implements InMemoryDbService {
         }
       ]
     };
+    const usersData = [
+      {
+        id: 1,
+        name: 'Mojo',
+        email: 'mojoMojo@gmail.com',
+        password: '1111'
+      },
+      {
+        id: 2,
+        name: 'Gloria',
+        email: 'gloria@gmail.com',
+        password: '1111'
+      }
+    ];
 
 
-    return {questions, questions_result, articles, blog, authors, phrases, about};
+    return {questions, questions_result, articles, blog, authors, phrases, about, usersData};
   }
 }

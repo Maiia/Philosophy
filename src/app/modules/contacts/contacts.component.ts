@@ -43,7 +43,6 @@ export class ContactsComponent implements OnInit {
       cWebsite: [null],
       cMessage: new FormControl('', [<any>Validators.required, ValidationService.messageValidator])
     });
-    console.log(1234, this.contactsReactiveForm.controls);
   }
 
 }

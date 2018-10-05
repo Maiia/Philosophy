@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class ValidationService {
 
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
+    //TODO validation for minlength
 
     const config = {
       'symbols': 'You should use A-z symbols',
@@ -46,6 +47,13 @@ export class ValidationService {
     }
   }
 
+  static passwordValidator(control) {
+    if (control.value.length > 5) {
+      return null;
+    } else {
+      return { 'minlength': true };
+    }
+  }
 
 
   static checkboxHasValueValidator(control) {

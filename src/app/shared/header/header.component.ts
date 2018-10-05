@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { SearchService } from '../../services/search.service';
 import { IBlog } from '../../interfaces/i-blog';
 import { BlogService } from '../../services/blog.service';
+import * as AuthActions from '../../store/actions/auth.actions';
+import { Store } from '@ngrx/store';
+import { IAppStore } from '../../interfaces/i-app-store';
+import { Observable } from 'rxjs';
+import { IAuth } from '../../interfaces/i-auth';
 
 
 @Component({
@@ -19,15 +24,31 @@ export class HeaderComponent implements OnInit {
   searchStr = '';
   modalRef: any;
 
+  auth$: Observable<IAuth>;
+  message$: Observable<string>;
+
+  defaultData = {
+    'userData': {
+      'name': 'Mojo',
+      'password': 'MojoMojo',
+      'email': 'mojoMojo@gmail.com'
+    }
+  };
+
   constructor(
     private router: Router,
     private blogService: BlogService,
     private modalService: NgbModal,
     private searchService: SearchService,
-    config: NgbModalConfig ) {
+    config: NgbModalConfig,
+    private store: Store<IAppStore>
+  ) {
 
     config.backdrop = 'static';
     config.keyboard = false;
+
+    this.auth$ = this.store.select('auth');
+    this.message$ = this.store.select('message');
   }
 
   ngOnInit() {
@@ -56,4 +77,26 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+
+  // registration
+  logIn() {
+    this.store.dispatch(new AuthActions.LogIn() );
+  }
+
+  logOut() {
+    this.store.dispatch(new AuthActions.LogOut() );
+  }
+
+  register() {
+    this.store.dispatch(new AuthActions.Register(this.defaultData));
+  }
+
+  // languages
+  spanishMessage() {
+    this.store.dispatch({ type: 'SPANISH' });
+  }
+
+  frenchMessage() {
+    this.store.dispatch({ type: 'FRENCH' });
+  }
 }

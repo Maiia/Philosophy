@@ -9,7 +9,6 @@ import { ValidationComponent } from './validation/validation.component';
 import { CcCustomDirectiveDirective } from '../directives/cc-custom-directive.directive';
 import { ControlInputComponent } from './form-controls/control-input/control-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ControlInputDirective } from './directives/control-input.directive';
 
 @NgModule({
   imports: [
@@ -24,7 +23,6 @@ import { ControlInputDirective } from './directives/control-input.directive';
     ValidationComponent,
     CcCustomDirectiveDirective,
     ControlInputComponent,
-    ControlInputDirective,
   ],
   exports: [
     PaginationComponent,
@@ -32,7 +30,6 @@ import { ControlInputDirective } from './directives/control-input.directive';
     ValidationComponent,
     ControlInputComponent,
     CcCustomDirectiveDirective,
-    ControlInputDirective
   ]
 })
 

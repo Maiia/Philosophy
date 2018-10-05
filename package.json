@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@ng-bootstrap/ng-bootstrap": "^3.2.0",
+    "@ngrx/effects": "^6.1.0",
+    "@ngrx/store": "^6.1.0",
     "@types/es6-shim": "^0.31.37",
     "angular-in-memory-web-api": "^0.6.1",
     "bootstrap": "^4.1.3",

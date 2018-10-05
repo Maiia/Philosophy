@@ -18,6 +18,15 @@ import { QuestionsModule } from './modules/questions/questions.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDbServiceService } from './services/in-memory-db-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+
+import { SimpleReducer } from './simple.reducer';
+import { postReducer } from './store/reducers/post.reducer';
+import { authReducer } from './store/reducers/auth.reducer';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {AuthModule} from './shared/auth/auth.module';
+
 
 
 @NgModule({
@@ -37,9 +46,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactsModule,
     SearchModule,
     QuestionsModule,
+    AuthModule,
     NotFoundModule,
     BrowserAnimationsModule,
-    InMemoryWebApiModule.forRoot(InMemoryDbServiceService, { delay: 500 })
+    InMemoryWebApiModule.forRoot(InMemoryDbServiceService, { delay: 500 }),
+    StoreModule.forRoot({
+      message: SimpleReducer,
+      post: postReducer,
+      auth: authReducer
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
