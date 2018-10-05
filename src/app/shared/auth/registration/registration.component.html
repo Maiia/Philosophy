@@ -1,0 +1,26 @@
+<section class="s-content s-content--narrow">
+
+  <div class="content">
+    <div class="row">
+
+      <h2 class="col-12">Registration</h2>
+
+      <div class="col-12">
+        <form [formGroup]="RegistrationReactiveForm" (submit)="onSubmit()">
+          <input class="form-control" type="text" formControlName="name" placeholder="Your name">
+          <app-validation-message class="text-left" [control]="RegistrationReactiveForm.controls['name']"></app-validation-message>
+
+          <input class="form-control" type="text" formControlName="email" placeholder="Your email">
+          <app-validation-message class="text-left" [control]="RegistrationReactiveForm.controls['email']"></app-validation-message>
+
+          <input class="form-control" type="password" formControlName="password" placeholder="Your password">
+          <app-validation-message class="text-left" [control]="RegistrationReactiveForm.controls['password']"></app-validation-message>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</section>
