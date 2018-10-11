@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { UsersDataService } from '../../../services/users-data.service';
 import * as AuthActions from '../../../store/actions/auth.actions';
 import { Store } from '@ngrx/store';
 import { IAppStore } from '../../../interfaces/i-app-store';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import { IAuth } from '../../../interfaces/i-auth';
+import {ValidationService} from '../../../services/validation.service';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +19,8 @@ export class LoginComponent implements OnInit {
 
   LoginReactiveForm: FormGroup;
   usersData$: Array<Object>;
-
-  defaultData = {
-    'loggedIn': true,
-    'userData': {
-      'name': 'Mojo',
-      'password': 'MojoMojo',
-      'email': 'mojoMojo@gmail.com'
-    }
-  };
+  auth$: Observable<IAuth>;
+  errorForm: boolean = false;
 
   constructor(
     private router: Router,
@@ -34,31 +30,49 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth$ = this.store.select('auth');
+    this.auth$.subscribe(
+      data => {
+        if (data.loggedIn) {
+          this.router.navigate(['/']);
+        }
+      }
+    )
+
     this.usersDataService.getUsersData().subscribe(
       (data: any) => this.usersData$ = data,
       err => console.log('err users data', err)
     );
 
     this.LoginReactiveForm = this.fb.group({
-      uLogin: new FormControl(''),
-      uPassword: new FormControl('')
+      login: new FormControl('', [<any>Validators.required]),
+      password: new FormControl('', [<any>Validators.required])
     });
   }
 
-  onSubmit() {
+  onSubmit(evt) {
+    evt.preventDefault();
     const controls = this.LoginReactiveForm.controls;
 
-    const currentUser = this.usersData$.find(
-      user => user['name'] === controls['uLogin'].value || user['email'] === controls['uLogin'].value
-    );
-    if (currentUser['password'] === controls['uPassword'].value) {
-      this.store.dispatch(new AuthActions.LogIn() );
-
-      localStorage.setItem('userLoggedIn', true);
-
-      this.router.navigate(['/']);
+    if (this.LoginReactiveForm.invalid) {
+      Object.keys(controls)
+        .forEach(controlName => controls[controlName].markAsTouched());
+      return;
     }
 
-  }
+    const currentUser = this.usersData$.find(
+      user => user['name'] === controls['login'].value || user['email'] === controls['login'].value
+    );
 
+    if (currentUser && currentUser['password'] === controls['uPassword'].value) {
+      this.store.dispatch(new AuthActions.LogIn() );
+
+      localStorage.setItem('userLoggedIn', 'true');
+      this.router.navigate(['/']);
+
+    } else {
+
+      this.errorForm = true;
+    }
+  }
 }

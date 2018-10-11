@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContactsComponent } from './contacts.component';
+import { AuthGuardService } from '../../services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'contacts', component: ContactsComponent, data: { state: 'contacts'} }
+  { path: 'contacts', component: ContactsComponent, data: { state: 'contacts'}, canActivate: [ AuthGuardService ] }
 ];
 
 @NgModule({

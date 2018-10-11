@@ -6,5 +6,4 @@ export interface UserData {
 
 export interface IAuth {
   'loggedIn': boolean;
-  'userData': UserData;
 }

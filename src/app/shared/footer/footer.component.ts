@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { ISocials } from '../../interfaces/i-socials';
-import {AboutService} from '../../services/about.service';
+import { AboutService } from '../../services/about.service';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -15,8 +16,11 @@ export class FooterComponent implements OnInit {
 
   socialsArr: Array<ISocials> = [];
 
+  footerMessage: string;
+
   constructor(
     private blogService: BlogService,
+    private router: Router,
     private aboutService: AboutService,
   ) {
     this.gerBlogArchivesPeriod();
@@ -25,6 +29,16 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe(val => {
+      if (val instanceof NavigationEnd) {
+
+        const routeData = this.router.config.find(pathItem => pathItem.path === this.router.url.replace('/', '')) || null;
+
+        if (routeData) {
+          this.footerMessage = routeData.data.footer_message;
+        }
+      }
+    });
   }
 
   getSocial() {

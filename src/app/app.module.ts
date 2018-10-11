@@ -20,9 +20,9 @@ import { InMemoryDbServiceService } from './services/in-memory-db-service.servic
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 
-import { SimpleReducer } from './simple.reducer';
 import { postReducer } from './store/reducers/post.reducer';
 import { authReducer } from './store/reducers/auth.reducer';
+import {languageReducer} from './store/reducers/language.reducer';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthModule} from './shared/auth/auth.module';
@@ -51,7 +51,7 @@ import {AuthModule} from './shared/auth/auth.module';
     BrowserAnimationsModule,
     InMemoryWebApiModule.forRoot(InMemoryDbServiceService, { delay: 500 }),
     StoreModule.forRoot({
-      message: SimpleReducer,
+      language: languageReducer,
       post: postReducer,
       auth: authReducer
     }),

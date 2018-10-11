@@ -4,12 +4,7 @@ import { IAuth } from '../../interfaces/i-auth';
 export type Action = AuthActions.All;
 
 const defaultState = {
-  'loggedIn': localStorage.getItem('userInfo.loggedIn') || false,
-  'userData': {
-    'name': localStorage.getItem('userInfo.name') || '',
-    'password': localStorage.getItem('userInfo.password') || '',
-    'email': localStorage.getItem('userInfo.email') || ''
-  }
+  'loggedIn': localStorage.getItem('userLoggedIn') === 'true' ? true : false
 }
 
 const newState = (state, newData) => Object.assign({}, state, newData);
@@ -23,10 +18,6 @@ export function authReducer(state = defaultState, action: Action) {
 
     case AuthActions.LOG_OUT:
       return newState(state, {loggedIn: false});
-
-    case AuthActions.REGISTER:
-      console.log('Payload', action.payload);
-      return newState(state, action.payload );
 
     default:
       return state;

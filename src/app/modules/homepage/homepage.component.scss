@@ -1,3 +1,5 @@
+@import '~src/app/scss/settings/variables';
+
 .pageheader-content {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -46,4 +48,9 @@
   .top [class*="col-"] {
     margin-bottom: 4.8rem;
   }
+}
+
+.featured-wrapper {
+  padding-bottom: 20px;
+  min-height: calc(100vh - #{$header-min-height});
 }

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { UserData } from '../../../interfaces/i-auth';
+import {IAuth, UserData} from '../../../interfaces/i-auth';
 import {ValidationService} from '../../../services/validation.service';
+import {HttpClient} from '@angular/common/http';
+import {Store} from '@ngrx/store';
+import {IAppStore} from '../../../interfaces/i-app-store';
+import {Observable} from 'rxjs';
+import * as AuthActions from '../../../store/actions/auth.actions';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -11,21 +17,20 @@ import {ValidationService} from '../../../services/validation.service';
 export class RegistrationComponent implements OnInit {
 
   RegistrationReactiveForm: FormGroup;
+  auth$: Observable<IAuth>;
 
-  defaultData = {
-    'userData': {
-      'name': 'Mojo',
-      'password': 'MojoMojo',
-      'email': 'mojoMojo@gmail.com'
-    }
-  };
-
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private store: Store<IAppStore>,
+    private router: Router
+  ) {
     this.RegistrationReactiveForm = fb.group({
       name: new FormControl('', [<any>Validators.required, ValidationService.nameValidator]),
       email: new FormControl('', [<any>Validators.required, ValidationService.emailValidator]),
       password: new FormControl('', [<any>Validators.required, ValidationService.passwordValidator])
     });
+    this.auth$ = this.store.select('auth');
   }
 
   ngOnInit() {
@@ -44,8 +49,13 @@ export class RegistrationComponent implements OnInit {
     Object.keys(this.RegistrationReactiveForm.controls).forEach(key => {
       userData[key] = this.RegistrationReactiveForm.get(key).value;
     });
-    this.defaultData.userData = userData;
-    console.log('IS EQ 1', this.defaultData.userData);
+
+    // this.http.post('http://httpbin.org/ip', userData);
+    this.http.post('http://httpbin.org/ip', userData);
+
+    this.store.dispatch(new AuthActions.LogIn());
+    localStorage.setItem('userLoggedIn', 'true');
+    this.router.navigate(['/']);
   }
 
 }

@@ -12,9 +12,11 @@ export class CcCustomDirectiveDirective {
 
   @HostBinding('class.entry__content') private: boolean;
 
-  @HostListener('mouseover')
-  onMouseOver() {
-    console.log('asd');
-    this.el.nativeElement.style.cssText = 'background-color: white; opacity: 0';
+  @HostListener('mouseenter') onMouseEnter() {
+    this.el.nativeElement.style.cssText = 'transform: scale(1.1); transition: all .3s ease';
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.el.nativeElement.style.cssText = 'transform: scale(1); transition: all .3s ease';
   }
 }

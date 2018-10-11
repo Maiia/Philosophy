@@ -1,13 +1,13 @@
-<div class="pageheader-content row no-gutters d-grid">
-
-  <app-featured
+<div class="featured-wrapper">
+  <div class="pageheader-content row no-gutters d-grid">
+    <app-featured
       *ngFor="let article of articles; let i = index"
       [i]="i"
       [article]="article"
       class="featured__column"
       [ngClass]="{'featured__column--big': i === 0, 'featured__column--small': i != 0}">
-  </app-featured>
-
+    </app-featured>
+  </div>
 </div>
 
 <section class="s-content">

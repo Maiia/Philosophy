@@ -1,21 +1,23 @@
 <div class="entry" [ngStyle]="{'background-image': 'url(' + article?.article_img + ')'}">
 
-  <div class="entry__content" appCcCustomDirective>
-    <span class="entry__category"><a href="#0">{{ article?.category }}</a></span>
+  <div class="entry__content">
+    <div appCcCustomDirective>
+      <span class="entry__category"><a href="#0">{{ article?.category }}</a></span>
 
-    <h1><a href="#0" title="{{ article?.title }}">{{ article?.title }}</a></h1>
+      <h1><a href="#0" title="{{ article?.title }}">{{ article?.title }}</a></h1>
 
-    <div class="entry__info">
+      <div class="entry__info">
 
-      <a href="#0" class="entry__profile-pic" *ngIf="i === 0">
-        <img class="avatar" [src]="author?.avatar" alt="{{ author?.name }}">
-      </a>
+        <a href="#0" class="entry__profile-pic" *ngIf="i === 0">
+          <img class="avatar" [src]="author?.avatar" alt="{{ author?.name }}">
+        </a>
 
-      <ul class="entry__meta">
-        <li><a href="#0">{{ author?.name}}</a></li>
-        <li>{{ article?.date | date: 'LLLL d, yyyy' }}</li>
-      </ul>
+        <ul class="entry__meta">
+          <li><a href="#0">{{ author?.name}}</a></li>
+          <li>{{ article?.date | date: 'LLLL d, yyyy' }}</li>
+        </ul>
 
+      </div>
     </div>
   </div> <!-- end entry__content -->
 </div> <!-- end entry -->

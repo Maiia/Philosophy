@@ -24,5 +24,4 @@ export class ValidationComponent {
       return null;
     }
   }
-
 }

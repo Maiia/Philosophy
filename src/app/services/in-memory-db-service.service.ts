@@ -673,6 +673,12 @@ export class InMemoryDbServiceService implements InMemoryDbService {
         name: 'Gloria',
         email: 'gloria@gmail.com',
         password: '1111'
+      },
+      {
+        id: 3,
+        name: 'hoho',
+        email: 'hoho@gmail.com',
+        password: '1111'
       }
     ];
 

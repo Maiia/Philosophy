@@ -6,9 +6,14 @@
       <h2 class="col-12">Log in</h2>
 
       <div class="col-12">
-        <form [formGroup]="LoginReactiveForm" (submit)="onSubmit()">
-          <input class="form-control" type="text" formControlName="uLogin" placeholder="Your login">
-          <input class="form-control" type="password" formControlName="uPassword" placeholder="Your password">
+        <form [formGroup]="LoginReactiveForm" (submit)="onSubmit($event)">
+          <input class="form-control" type="text" formControlName="login" placeholder="Your login">
+          <app-validation-message class="text-left" [control]="LoginReactiveForm.controls['login']"></app-validation-message>
+
+          <input class="form-control" type="password" formControlName="password" placeholder="Your password">
+          <app-validation-message class="text-left" [control]="LoginReactiveForm.controls['password']"></app-validation-message>
+
+          <div class="invalid-feedback" [ngClass]="{'d-block': errorForm}">Incorrect login or password</div>
           <button type="submit">Submit</button>
         </form>
       </div>

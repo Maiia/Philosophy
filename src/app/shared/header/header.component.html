@@ -1,19 +1,25 @@
 <header>
-  <div>
-  5555
-    <button (click)="logIn()">Log in</button>
-    <button (click)="logOut()">Log out</button>
-    <button (click)="register()">Register</button>
-  6666
-  </div>
-  <div>
-    777
-    <p>{{ message$ | async }}</p>
 
-    <button (click)="spanishMessage()">Spanish</button>
-    <button (click)="frenchMessage()">French</button>
-    888
+  <div class="top-pannel row">
+    <div class="d-flex w-100 justify-content-between align-items-center align-content-center">
+      <ul class="auth list-inline">
+        <li *ngIf="router.url !== '/login' && ((auth$ | async)?.loggedIn !== true)" routerLink="/login">Log in</li>
+        <li *ngIf="router.url !== '/login' && router.url !== '/registration' && (auth$ | async)?.loggedIn" (click)="logOut()">Log out</li>
+        <li *ngIf="(router.url !== '/registration')" routerLink="/registration">Register</li>
+      </ul>
+
+      <div class="languages d-flex text-nowrap">
+        <p>{{ (language$ | async)?.message }}</p>
+
+        <ul class="list-inline text-nowrap">
+          <li (click)="englishMessage()">English</li>
+          <li (click)="spanishMessage()">Spanish</li>
+          <li (click)="frenchMessage()">French</li>
+        </ul>
+      </div>
+    </div>
   </div>
+
   <div class="header__content row header-top">
 
     <ul class="header__social">
