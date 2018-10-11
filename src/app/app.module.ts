@@ -26,6 +26,8 @@ import {languageReducer} from './store/reducers/language.reducer';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthModule} from './shared/auth/auth.module';
+import {EffectsModule} from '@ngrx/effects';
+import {AuthEffect} from './store/effects/auth.effect';
 
 
 
@@ -55,6 +57,9 @@ import {AuthModule} from './shared/auth/auth.module';
       post: postReducer,
       auth: authReducer
     }),
+    EffectsModule.forRoot([
+      AuthEffect
+    ]),
     FormsModule,
     ReactiveFormsModule
   ],

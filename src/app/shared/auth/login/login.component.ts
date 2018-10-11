@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         }
       }
-    )
+    );
 
     this.usersDataService.getUsersData().subscribe(
       (data: any) => this.usersData$ = data,
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       user => user['name'] === controls['login'].value || user['email'] === controls['login'].value
     );
 
-    if (currentUser && currentUser['password'] === controls['uPassword'].value) {
+    if (currentUser && currentUser['password'] === controls['password'].value) {
       this.store.dispatch(new AuthActions.LogIn() );
 
       localStorage.setItem('userLoggedIn', 'true');

@@ -1,5 +1,4 @@
 import * as AuthActions from '../actions/auth.actions';
-import { IAuth } from '../../interfaces/i-auth';
 
 export type Action = AuthActions.All;
 
@@ -14,9 +13,15 @@ export function authReducer(state = defaultState, action: Action) {
 
   switch (action.type) {
     case AuthActions.LOG_IN:
+      return state;
+
+    case AuthActions.LOG_IN_SUCCESS:
       return newState(state, {loggedIn: true});
 
     case AuthActions.LOG_OUT:
+      return state;
+
+    case AuthActions.LOG_OUT_SUCCESS:
       return newState(state, {loggedIn: false});
 
     default:
